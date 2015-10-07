@@ -1,0 +1,28 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity$PlaceholderFragment">
+
+    <Spinner
+        android:id="@+id/from_college_spinner"
+        android:layout_marginTop="@dimen/upper_spinner_top_margin"
+        android:layout_width="@dimen/spinner_width"
+        android:layout_height="@dimen/spinner_height"
+        android:layout_gravity="center"></Spinner>
+
+    <Spinner
+        android:id="@+id/to_university_spinner"
+        android:layout_marginTop="@dimen/bottom_spinner_top_margin"
+        android:layout_width="@dimen/spinner_width"
+        android:layout_height="@dimen/spinner_height"
+        android:layout_gravity="center"
+        android:visibility="invisible"></Spinner>
+
+</LinearLayout>
