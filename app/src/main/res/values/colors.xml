@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="orange" type="color">#e67e22</item>
+    <item name="background_color" type="color">#2c3e50</item>
+    <item name="spinner_text_color" type="color">#FFFFFF</item>
+</resources>

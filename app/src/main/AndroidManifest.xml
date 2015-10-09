@@ -16,14 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ChooseMajor"
-            android:label="@string/title_activity_choose_major"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.assist.dg.androidassist.MainActivity" />
-        </activity>
     </application>
 
 </manifest>
