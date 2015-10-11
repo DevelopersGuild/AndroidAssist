@@ -47,7 +47,7 @@ public class CourseListAdapter extends BaseAdapter {
         ViewHolder holder = null;
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.course_list, null);
+            convertView = inflater.inflate(R.layout.swipelistview, null);
             holder.requiredClass = (TextView) convertView.findViewById(R.id.required_class_textview);
             holder.univEquivalent = (TextView) convertView.findViewById(R.id.univ_equivalent_textview);
             convertView.setTag(holder);

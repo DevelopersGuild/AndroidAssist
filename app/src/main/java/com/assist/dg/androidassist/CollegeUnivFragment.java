@@ -14,6 +14,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.fortysevendeg.swipelistview.SwipeListView;
+
 import java.util.ArrayList;
 
 /**
@@ -89,8 +91,6 @@ public class CollegeUnivFragment extends Fragment {
 
         fromCollegeSpinner.setOnItemSelectedListener(listener);
         toUniversitySpinner.setOnItemSelectedListener(listener);
-
-        //SwipeListView
 
         return rootView;
     }

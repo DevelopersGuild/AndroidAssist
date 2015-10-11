@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.ListView;
 
+import com.fortysevendeg.swipelistview.SwipeListView;
+
 import java.util.ArrayList;
 
 
@@ -58,7 +60,7 @@ public class CoursesActivity extends ActionBarActivity {
 
         RequiredClass[] temp;
         ArrayList<RequiredClass> classList;
-        ListView classListView;
+        SwipeListView swipeListView;
 
         public PlaceholderFragment() {
 
@@ -92,10 +94,10 @@ public class CoursesActivity extends ActionBarActivity {
                 System.out.println(classList.get(i).getFormalClassName());
             }
 
-            classListView = (ListView) rootView.findViewById(R.id.class_list);
+            swipeListView = (SwipeListView) rootView.findViewById(R.id.class_list);
             CourseListAdapter courseListAdapter = new CourseListAdapter(rootView.getContext(), classList);
 
-            classListView.setAdapter(courseListAdapter);
+            swipeListView.setAdapter(courseListAdapter);
 
             return rootView;
         }
