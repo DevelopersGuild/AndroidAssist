@@ -90,6 +90,7 @@ public class CollegeUnivFragment extends Fragment {
         fromCollegeSpinner.setOnItemSelectedListener(listener);
         toUniversitySpinner.setOnItemSelectedListener(listener);
 
+        //SwipeListView
 
         return rootView;
     }

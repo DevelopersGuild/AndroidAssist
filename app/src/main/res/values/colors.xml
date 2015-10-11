@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <item name="orange" type="color">#e67e22</item>
-    <item name="background_color" type="color">#2c3e50</item>
-    <item name="spinner_text_color" type="color">#FFFFFF</item>
+    <item name="spinner_background_color" type="color">#FFFFFF</item>
+    <item name="background_color" type="color">#ffffff</item>
+    <item name="spinner_text_color" type="color">#2c3e50</item>
+    <item name="actionbar_color" type="color">#e67e22</item>
 </resources>

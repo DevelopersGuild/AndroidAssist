@@ -25,6 +25,8 @@ import static android.widget.AdapterView.*;
 
 public class MainActivity extends ActionBarActivity {
 
+    private final static String TAG_FRAGMENT = "TAG_FRAGMENT";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,11 +68,20 @@ public class MainActivity extends ActionBarActivity {
         Fragment newFragment = new ChooseMajorFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.container, newFragment);
+        transaction.replace(R.id.container, newFragment, TAG_FRAGMENT);
         transaction.addToBackStack(null);
 
 
         transaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 
 

@@ -7,13 +7,13 @@
         <item name="colorPrimaryDark">@color/color_secondary</item>
         <item name="colorAccent">@color/color_accent</item>
         -->
-        <item name="android:statusBarColor">@color/orange</item>
+        <item name="android:statusBarColor">@color/actionbar_color</item>
         <item name="actionBarStyle">@style/ActionBar</item>
     </style>
 
 
     <style name="ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="background">@color/orange</item>
+        <item name="background">@color/actionbar_color</item>
     </style>
 
 
