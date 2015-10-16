@@ -11,6 +11,27 @@ public class RequiredClass {
     private boolean taken = false;
     private boolean qualified = true;
     private String univEquivalent = "Default Equiv";
+    public RequiredClass(String name, RequiredClass[] prereqs, float numUnits, 
+                          boolean take, String univEq)
+    { 
+       formalClassName = name;
+       prerequisites = prereqs;
+       units = numUnits;
+       taken = take;
+      univEquivalent = univEq;
+      qualif();
+    }
+   private void qualif()
+   {
+    for(int i = 0; i < prerequisites.length; i++)
+     {
+             if(prerequisites[i].isTaken() == false)
+             {
+                  qualified = false;
+             }
+      }
+     qualified =  true;
+   }
 
     public void setFormalClassName(String formalClassName){
         this.formalClassName = formalClassName;
