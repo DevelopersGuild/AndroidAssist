@@ -1,4 +1,4 @@
-package com.assist.dg.androidassist;
+package com.assist.dg.androidassist.Activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -10,19 +10,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
-import android.widget.ListView;
 
-import com.fortysevendeg.swipelistview.SwipeListView;
+import com.assist.dg.androidassist.R;
 
-import java.util.ArrayList;
-
-
-public class CoursesActivity extends ActionBarActivity {
+public class InfoActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_courses);
+        setContentView(R.layout.activity_info);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -34,7 +30,7 @@ public class CoursesActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_courses, menu);
+        getMenuInflater().inflate(R.menu.menu_info, menu);
         return true;
     }
 
@@ -58,47 +54,13 @@ public class CoursesActivity extends ActionBarActivity {
      */
     public static class PlaceholderFragment extends Fragment {
 
-        RequiredClass[] temp;
-        ArrayList<RequiredClass> classList;
-        SwipeListView swipeListView;
-
         public PlaceholderFragment() {
-
-            classList = new ArrayList<RequiredClass>();
-            //Fill with dummy data
-            int numOfPrerequisites = 3;
-            int numOfRequiredClasses = 20;
-            temp = new RequiredClass[numOfRequiredClasses];
-
-            for (int i=0; i<numOfRequiredClasses; i++) {
-                RequiredClass[] reqArray = new RequiredClass[numOfPrerequisites];
-                for (int j=0; j<numOfPrerequisites; j++) {
-                    reqArray[j] = new RequiredClass();
-                }
-
-
-                temp[i] = new RequiredClass();
-                temp[i].setFormalClassName("CLASS " + i);
-                temp[i].setPrerequisites(reqArray);
-
-                classList.add(temp[i]);
-            }
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_courses, container, false);
-
-            for (int i=0; i<classList.size(); i++) {
-                System.out.println(classList.get(i).getFormalClassName());
-            }
-
-            swipeListView = (SwipeListView) rootView.findViewById(R.id.class_list);
-            CourseListAdapter courseListAdapter = new CourseListAdapter(rootView.getContext(), classList);
-
-            swipeListView.setAdapter(courseListAdapter);
-
+            View rootView = inflater.inflate(R.layout.fragment_info, container, false);
             return rootView;
         }
     }

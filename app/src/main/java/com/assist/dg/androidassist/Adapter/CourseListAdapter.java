@@ -1,4 +1,4 @@
-package com.assist.dg.androidassist;
+package com.assist.dg.androidassist.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.assist.dg.androidassist.R;
+import com.assist.dg.androidassist.RequiredClass;
 
 import java.util.ArrayList;
 

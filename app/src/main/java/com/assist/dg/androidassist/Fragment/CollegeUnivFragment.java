@@ -1,4 +1,4 @@
-package com.assist.dg.androidassist;
+package com.assist.dg.androidassist.Fragment;
 
 /**
  * Created by hendryjoe on 10/7/15.
@@ -6,7 +6,6 @@ package com.assist.dg.androidassist;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.fortysevendeg.swipelistview.SwipeListView;
+import com.assist.dg.androidassist.Activity.MainActivity;
+import com.assist.dg.androidassist.R;
+import com.assist.dg.androidassist.Parser.UnivParser;
 
 import java.util.ArrayList;
 
@@ -25,26 +26,36 @@ public class CollegeUnivFragment extends Fragment {
 
     ArrayList<String> listOfColleges;
     ArrayList<String> listOfUniversities;
+    ArrayList<String> listOfUnivValues;
     Spinner fromCollegeSpinner;
     Spinner toUniversitySpinner;
 
+    UnivParser univParser;
+    public String selectedUnivValue;
+
     public CollegeUnivFragment() {
+
         //Populate the colleges and univs list with dummy data
         String dummy;
         listOfColleges = new ArrayList<String>();
         listOfUniversities = new ArrayList<String>();
+        listOfUnivValues = new ArrayList<String>();
 
         listOfColleges.add("Choose a Community College");
-        for (int i=0; i<15; i++){
+        for (int i=0; i<3; i++){
             dummy = "Community College " + i;
             listOfColleges.add(dummy);
         }
 
         listOfUniversities.add("Choose a University");
-        for (int i=0; i<12; i++){
+        for (int i=0; i<3; i++){
             dummy = "University" + i;
             listOfUniversities.add(dummy);
         }
+
+        //Use real data, if it works, delete above code
+        univParser = new UnivParser();
+        univParser.execute(listOfUniversities, listOfUnivValues);
 
 
     }
@@ -64,6 +75,9 @@ public class CollegeUnivFragment extends Fragment {
             else if(spinner.getId() == R.id.to_university_spinner)
             {
                 if (position != 0) {
+                    selectedUnivValue = listOfUnivValues.get(position);
+                    System.out.println(selectedUnivValue);
+                    ((MainActivity) getActivity()).setSelectedUnivValue(selectedUnivValue);
                     ((MainActivity) getActivity()).showMajorFragment();
                 }
             }
@@ -89,10 +103,12 @@ public class CollegeUnivFragment extends Fragment {
         ArrayAdapter<String> universityAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfUniversities);
         toUniversitySpinner.setAdapter(universityAdapter);
 
+
         fromCollegeSpinner.setOnItemSelectedListener(listener);
         toUniversitySpinner.setOnItemSelectedListener(listener);
 
         return rootView;
     }
+
 
 }

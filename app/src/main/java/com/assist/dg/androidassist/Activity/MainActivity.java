@@ -1,31 +1,29 @@
-package com.assist.dg.androidassist;
+package com.assist.dg.androidassist.Activity;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 
-import java.util.ArrayList;
-
-import static android.widget.AdapterView.*;
+import com.assist.dg.androidassist.Fragment.ChooseMajorFragment;
+import com.assist.dg.androidassist.Fragment.CollegeUnivFragment;
+import com.assist.dg.androidassist.R;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private final static String TAG_FRAGMENT = "TAG_FRAGMENT";
+    String selectedUnivValue;
+
+    public void setSelectedUnivValue(String univValue){
+        selectedUnivValue = univValue;
+    }
+
+    public String getSelectedUnivValue(){
+        return selectedUnivValue;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

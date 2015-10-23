@@ -1,4 +1,4 @@
-package com.assist.dg.androidassist;
+package com.assist.dg.androidassist.Fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -11,6 +11,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.assist.dg.androidassist.Activity.CoursesActivity;
+import com.assist.dg.androidassist.Activity.MainActivity;
+import com.assist.dg.androidassist.Parser.MajorParser;
+import com.assist.dg.androidassist.Parser.UnivParser;
+import com.assist.dg.androidassist.R;
+
 import java.util.ArrayList;
 
 /**
@@ -18,7 +24,10 @@ import java.util.ArrayList;
  */
 public class ChooseMajorFragment extends Fragment {
 
-    ArrayList<String> listOfMajors;
+    public ArrayList<String> listOfMajors;
+    public ArrayList<String> listOfMajorValue;
+    public String selectedUnivValue;
+    public String selectedMajorValue;
     Spinner chooseMajorSpinner;
     Button viewCoursesButton;
 
@@ -30,25 +39,21 @@ public class ChooseMajorFragment extends Fragment {
         for (int i=0; i<15; i++){
             listOfMajors.add("Major " + i);
         }
-    }
 
-    class MajorSelectedListener implements AdapterView.OnItemSelectedListener{
 
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_choose_major, container, false);
+
+
+        selectedUnivValue = ((MainActivity) getActivity()).getSelectedUnivValue();
+
+        MajorParser majorparser = new MajorParser(this);
+        majorparser.execute();
+
 
         chooseMajorSpinner = (Spinner) rootView.findViewById(R.id.choose_major_spinner);
         ArrayAdapter<String> majorAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, listOfMajors);
@@ -58,7 +63,7 @@ public class ChooseMajorFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0){
-
+                    selectedMajorValue = listOfMajorValue.get(position);
                 }
             }
 
