@@ -41,7 +41,7 @@ public class MajorParser extends AsyncTask<Void, Void, String> {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
 
-        final String API_URL = "http://159.203.90.30:8081/api/" + selectedUnivValue + "/majors";
+        String API_URL = "http://159.203.90.30:8081/api/" + selectedUnivValue + "/majors";
         //Testing
         Log.d("major_parser", API_URL);
 

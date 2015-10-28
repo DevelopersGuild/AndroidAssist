@@ -11,6 +11,11 @@ public class RequiredClass {
     private boolean taken = false;
     private boolean qualified = true;
     private String univEquivalent = "Default Equiv";
+
+    public RequiredClass(){
+
+    }
+
     public RequiredClass(String name, RequiredClass[] prereqs, float numUnits, 
                           boolean take, String univEq)
     { 
@@ -21,6 +26,8 @@ public class RequiredClass {
       univEquivalent = univEq;
       qualif();
     }
+
+
    private void qualif()
    {
     for(int i = 0; i < prerequisites.length; i++)
