@@ -1,4 +1,4 @@
-package com.assist.dg.androidassist.Fragment;
+package com.assist.dg.androidassist.fragment;
 
 /**
  * Created by hendryjoe on 10/7/15.
@@ -6,15 +6,14 @@ package com.assist.dg.androidassist.Fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import com.assist.dg.androidassist.Activity.MainActivity;
-import com.assist.dg.androidassist.Parser.UnivParser;
+import com.assist.dg.androidassist.activity.MainActivity;
+import com.assist.dg.androidassist.parser.UnivParser;
 import com.assist.dg.androidassist.R;
 import java.util.ArrayList;
 

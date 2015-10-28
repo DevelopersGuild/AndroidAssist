@@ -1,4 +1,4 @@
-package com.assist.dg.androidassist.Activity;
+package com.assist.dg.androidassist.activity;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -7,8 +7,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.assist.dg.androidassist.Fragment.ChooseMajorFragment;
-import com.assist.dg.androidassist.Fragment.CollegeUnivFragment;
+import com.assist.dg.androidassist.fragment.ChooseMajorFragment;
+import com.assist.dg.androidassist.fragment.CollegeUnivFragment;
 import com.assist.dg.androidassist.R;
 
 

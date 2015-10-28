@@ -1,23 +1,12 @@
-package com.assist.dg.androidassist.Activity;
+package com.assist.dg.androidassist.activity;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
-import android.widget.ListView;
 
-import com.assist.dg.androidassist.Fragment.CoursesFragment;
+import com.assist.dg.androidassist.fragment.CoursesFragment;
 import com.assist.dg.androidassist.R;
-import com.fortysevendeg.swipelistview.SwipeListView;
-
-import java.util.ArrayList;
-
 
 public class CoursesActivity extends ActionBarActivity {
 

@@ -1,9 +1,9 @@
-package com.assist.dg.androidassist.Parser;
+package com.assist.dg.androidassist.parser;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.assist.dg.androidassist.Fragment.ChooseMajorFragment;
+import com.assist.dg.androidassist.fragment.ChooseMajorFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package com.assist.dg.androidassist.Fragment;
+package com.assist.dg.androidassist.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -11,10 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import com.assist.dg.androidassist.Activity.CoursesActivity;
-import com.assist.dg.androidassist.Activity.MainActivity;
-import com.assist.dg.androidassist.Parser.MajorParser;
-import com.assist.dg.androidassist.Parser.UnivParser;
+import com.assist.dg.androidassist.activity.CoursesActivity;
+import com.assist.dg.androidassist.activity.MainActivity;
+import com.assist.dg.androidassist.parser.MajorParser;
 import com.assist.dg.androidassist.R;
 
 import java.util.ArrayList;

@@ -1,9 +1,7 @@
-package com.assist.dg.androidassist.Parser;
+package com.assist.dg.androidassist.parser;
 
 import android.os.AsyncTask;
 import android.util.Log;
-
-import com.assist.dg.androidassist.Fragment.CollegeUnivFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
