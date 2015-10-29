@@ -68,7 +68,6 @@ public class CollegeUnivFragment extends Fragment {
       } else if (spinner.getId() == R.id.to_university_spinner) {
         if (position != 0) {
           selectedUnivValue = listOfUnivValues.get(position);
-          System.out.println(selectedUnivValue);
           ((MainActivity) getActivity()).setSelectedUnivValue(selectedUnivValue);
           ((MainActivity) getActivity()).showMajorFragment();
         }
