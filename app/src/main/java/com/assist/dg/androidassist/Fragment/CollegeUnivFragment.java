@@ -12,9 +12,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import com.assist.dg.androidassist.activity.MainActivity;
-import com.assist.dg.androidassist.parser.UnivParser;
 import com.assist.dg.androidassist.R;
+import com.assist.dg.androidassist.parser.UnivParser;
 import java.util.ArrayList;
 
 /**
@@ -69,8 +68,8 @@ public class CollegeUnivFragment extends Fragment {
         if (position != 0) {
           selectedUnivValue = listOfUnivValues.get(position);
           System.out.println(selectedUnivValue);
-          ((MainActivity) getActivity()).setSelectedUnivValue(selectedUnivValue);
-          ((MainActivity) getActivity()).showMajorFragment();
+          //((MainActivity) getActivity()).setSelectedUnivValue(selectedUnivValue);
+          //((MainActivity) getActivity()).showMajorFragment();
         }
       }
     }

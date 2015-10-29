@@ -1,7 +1,6 @@
 package com.assist.dg.androidassist.fragment;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-
-import com.assist.dg.androidassist.activity.CoursesActivity;
-import com.assist.dg.androidassist.activity.MainActivity;
-import com.assist.dg.androidassist.parser.MajorParser;
 import com.assist.dg.androidassist.R;
-
+import com.assist.dg.androidassist.parser.MajorParser;
 import java.util.ArrayList;
 
 /**
@@ -44,7 +39,7 @@ public class ChooseMajorFragment extends Fragment {
       Bundle savedInstanceState) {
     View rootView = inflater.inflate(R.layout.fragment_choose_major, container, false);
 
-    selectedUnivValue = ((MainActivity) getActivity()).getSelectedUnivValue();
+    //selectedUnivValue = ((MainActivity) getActivity()).getSelectedUnivValue();
 
     MajorParser majorparser = new MajorParser(this);
     majorparser.execute();
@@ -70,8 +65,8 @@ public class ChooseMajorFragment extends Fragment {
     viewCoursesButton = (Button) rootView.findViewById(R.id.view_courses_button);
     viewCoursesButton.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
-        Intent intent = new Intent(getActivity(), CoursesActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(getActivity(), CoursesActivity.class);
+        //startActivity(intent);
       }
     });
 

@@ -4,6 +4,7 @@ buildscript {
   repositories {
     jcenter()
     mavenCentral()
+    maven { url "http://dl.bintray.com/tbruyelle/tbruyelle" }
   }
   dependencies {
     classpath 'com.android.tools.build:gradle:1.3.0'
@@ -20,8 +21,10 @@ allprojects {
 
 ext {
   compileSdkVersion = 23
-  buildToolsVersion = '21.1.2'
+  buildToolsVersion = '23.0.1'
 
   minSdkVersion = 16
   targetSdkVersion = 23
+
+  supportVersion = '23.0.1'
 }
