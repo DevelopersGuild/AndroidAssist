@@ -19,94 +19,92 @@ import java.util.ArrayList;
  */
 public class UnivParser extends AsyncTask<ArrayList<String>, Void, String> {
 
-    ArrayList<String> listOfUniversities;
-    ArrayList<String> listOfUnivValues;
+  ArrayList<String> listOfUniversities;
+  ArrayList<String> listOfUnivValues;
 
-    @Override
-    protected String doInBackground(ArrayList<String>... params) {
+  @Override protected String doInBackground(ArrayList<String>... params) {
 
-        HttpURLConnection urlConnection = null;
-        BufferedReader reader = null;
+    HttpURLConnection urlConnection = null;
+    BufferedReader reader = null;
 
-        String univJsonStr = null;
+    String univJsonStr = null;
 
-        listOfUniversities = new ArrayList<String>();
-        listOfUniversities = params[0];
-        listOfUnivValues = params[1];
+    listOfUniversities = new ArrayList<String>();
+    listOfUniversities = params[0];
+    listOfUnivValues = params[1];
 
+    try {
+      final String API_URL = "http://159.203.90.30:8081/api/schools";
+
+      URL url = new URL(API_URL);
+      urlConnection = (HttpURLConnection) url.openConnection();
+      urlConnection.setRequestMethod("GET");
+      urlConnection.connect();
+
+      //Read
+      InputStream inputStream = urlConnection.getInputStream();
+      StringBuffer buffer = new StringBuffer();
+
+      if (inputStream == null) {
+        return null;
+      }
+
+      reader = new BufferedReader(new InputStreamReader(inputStream));
+      String line;
+
+      while ((line = reader.readLine()) != null) {
+        buffer.append(line + "\n");
+      }
+
+      if (buffer.length() == 0) {
+        return null;
+      }
+
+      univJsonStr = buffer.toString();
+    } catch (Exception e) {
+      Log.e("univ_parser", "ERROR CONNECTING TO API", e);
+    } finally {
+      if (urlConnection != null) {
+        urlConnection.disconnect();
+      }
+      if (reader != null) {
         try {
-            final String API_URL = "http://159.203.90.30:8081/api/schools";
-
-            URL url = new URL(API_URL);
-            urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestMethod("GET");
-            urlConnection.connect();
-
-            //Read
-            InputStream inputStream = urlConnection.getInputStream();
-            StringBuffer buffer = new StringBuffer();
-
-            if (inputStream == null){
-                return null;
-            }
-
-            reader = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
-
-            while((line = reader.readLine()) != null){
-                buffer.append(line + "\n");
-            }
-
-            if (buffer.length() == 0){
-                return null;
-            }
-            
-            univJsonStr = buffer.toString();
+          reader.close();
         } catch (Exception e) {
-            Log.e("univ_parser", "ERROR CONNECTING TO API", e);
-        } finally {
-            if (urlConnection != null){
-                urlConnection.disconnect();
-            }
-            if (reader != null){
-                try {
-                    reader.close();
-                } catch (Exception e){
-                    Log.e("univ_parser", "ERROR CLOSING", e);
-                }
-            }
+          Log.e("univ_parser", "ERROR CLOSING", e);
         }
-        /**
-        //Testing the JSON, using hardcoded data
-        univJsonStr = "[" + "{" + "\"" + "school" + "\"" + ":\"" + "California Maritime Academy" +"\"" + ",\"" + "value\"" + ":\"CSUMA\"}," +
-        "{\"school\":\"California Polytechnic University, Pomona\",\"value\":\"CPP\"}," +
-        "{\"school\":\"California Polytechnic University, San Luis Obispo\",\"value\":\"CPSLO\"}" + "]";
-        **/
-        return univJsonStr;
+      }
     }
+    /**
+     //Testing the JSON, using hardcoded data
+     univJsonStr = "[" + "{" + "\"" + "school" + "\"" + ":\"" + "California Maritime Academy" +"\"" + ",\"" + "value\"" + ":\"CSUMA\"}," +
+     "{\"school\":\"California Polytechnic University, Pomona\",\"value\":\"CPP\"}," +
+     "{\"school\":\"California Polytechnic University, San Luis Obispo\",\"value\":\"CPSLO\"}" + "]";
+     **/
+    return univJsonStr;
+  }
 
-    @Override
-    protected void onPostExecute(String json){
-        try {
-            setListOfUniversities(json);
-        } catch (Exception e) {
-            Log.e("univ_parser", "Error converting json to list", e);
-        }
+  @Override protected void onPostExecute(String json) {
+    try {
+      setListOfUniversities(json);
+    } catch (Exception e) {
+      Log.e("univ_parser", "Error converting json to list", e);
     }
+  }
 
-    public void setListOfUniversities(String univJsonStr) throws JSONException{
-        JSONArray arrayOfUnivs = new JSONArray(univJsonStr);
-        JSONObject univs;
-        listOfUniversities.clear();
-        listOfUnivValues.clear();
-        listOfUniversities.add("Choose a University");
-        listOfUnivValues.add("default_value");
-        for (int i=0; i<arrayOfUnivs.length(); i++){
-            univs = arrayOfUnivs.getJSONObject(i);
-            listOfUniversities.add(univs.getString("school"));
-            listOfUnivValues.add(univs.getString("value"));
-        }
+  public void setListOfUniversities(String univJsonStr) throws JSONException {
+    JSONArray arrayOfUnivs = new JSONArray(univJsonStr);
+    JSONObject univs;
+    listOfUniversities.clear();
+    listOfUnivValues.clear();
+    listOfUniversities.add("Choose a University");
+    listOfUnivValues.add("default_value");
+    for (int i = 0; i < arrayOfUnivs.length(); i++) {
+      univs = arrayOfUnivs.getJSONObject(i);
+      listOfUniversities.add(univs.getString("school"));
+      listOfUnivValues.add(univs.getString("value"));
     }
+  }
 }
 
 

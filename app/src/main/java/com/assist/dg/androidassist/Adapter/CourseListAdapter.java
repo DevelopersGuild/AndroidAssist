@@ -17,50 +17,46 @@ import java.util.ArrayList;
  */
 public class CourseListAdapter extends BaseAdapter {
 
-    private ArrayList<RequiredClass> objects;
-    private LayoutInflater inflater;
+  private ArrayList<RequiredClass> objects;
+  private LayoutInflater inflater;
 
-    private class ViewHolder{
-        TextView requiredClass;
-        TextView univEquivalent;
+  private class ViewHolder {
+    TextView requiredClass;
+    TextView univEquivalent;
+  }
+
+  public CourseListAdapter(Context context, ArrayList<RequiredClass> objects) {
+    inflater = LayoutInflater.from(context);
+    this.objects = objects;
+  }
+
+  @Override public int getCount() {
+    return objects.size();
+  }
+
+  @Override public Object getItem(int position) {
+    return objects.get(position);
+  }
+
+  @Override public long getItemId(int position) {
+    return position;
+  }
+
+  @Override public View getView(int position, View convertView, ViewGroup parent) {
+    ViewHolder holder = null;
+    if (convertView == null) {
+      holder = new ViewHolder();
+      convertView = inflater.inflate(R.layout.swipelistview, null);
+      holder.requiredClass = (TextView) convertView.findViewById(R.id.required_class_textview);
+      holder.univEquivalent = (TextView) convertView.findViewById(R.id.univ_equivalent_textview);
+      convertView.setTag(holder);
+    } else {
+      holder = (ViewHolder) convertView.getTag();
     }
 
-    public CourseListAdapter(Context context, ArrayList<RequiredClass> objects){
-        inflater = LayoutInflater.from(context);
-        this.objects = objects;
-    }
+    holder.requiredClass.setText(objects.get(position).getFormalClassName());
+    holder.univEquivalent.setText(objects.get(position).getUnivEquivalent());
 
-    @Override
-    public int getCount() {
-        return objects.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return objects.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
-        if (convertView == null) {
-            holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.swipelistview, null);
-            holder.requiredClass = (TextView) convertView.findViewById(R.id.required_class_textview);
-            holder.univEquivalent = (TextView) convertView.findViewById(R.id.univ_equivalent_textview);
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
-        }
-
-        holder.requiredClass.setText(objects.get(position).getFormalClassName());
-        holder.univEquivalent.setText(objects.get(position).getUnivEquivalent());
-
-        return convertView;
-    }
+    return convertView;
+  }
 }

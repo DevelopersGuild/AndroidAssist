@@ -23,58 +23,54 @@ import java.util.ArrayList;
 
 public class CoursesFragment extends Fragment {
 
-    RequiredClass[] temp;
-    ArrayList<RequiredClass> classList;
-    SwipeListView swipeListView;
+  RequiredClass[] temp;
+  ArrayList<RequiredClass> classList;
+  SwipeListView swipeListView;
 
-    public CoursesFragment() {
+  public CoursesFragment() {
 
-        classList = new ArrayList<RequiredClass>();
-        //Fill with dummy data
-        int numOfPrerequisites = 3;
-        int numOfRequiredClasses = 20;
-        temp = new RequiredClass[numOfRequiredClasses];
+    classList = new ArrayList<RequiredClass>();
+    //Fill with dummy data
+    int numOfPrerequisites = 3;
+    int numOfRequiredClasses = 20;
+    temp = new RequiredClass[numOfRequiredClasses];
 
-        for (int i=0; i<numOfRequiredClasses; i++) {
-            RequiredClass[] reqArray = new RequiredClass[numOfPrerequisites];
-            for (int j=0; j<numOfPrerequisites; j++) {
-                reqArray[j] = new RequiredClass();
-            }
+    for (int i = 0; i < numOfRequiredClasses; i++) {
+      RequiredClass[] reqArray = new RequiredClass[numOfPrerequisites];
+      for (int j = 0; j < numOfPrerequisites; j++) {
+        reqArray[j] = new RequiredClass();
+      }
 
+      temp[i] = new RequiredClass();
+      temp[i].setFormalClassName("CLASS " + i);
+      temp[i].setPrerequisites(reqArray);
 
-            temp[i] = new RequiredClass();
-            temp[i].setFormalClassName("CLASS " + i);
-            temp[i].setPrerequisites(reqArray);
-
-            classList.add(temp[i]);
-        }
+      classList.add(temp[i]);
     }
+  }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.fragment_courses, container, false);
+  @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
+      Bundle savedInstanceState) {
+    final View rootView = inflater.inflate(R.layout.fragment_courses, container, false);
 
-        swipeListView = (SwipeListView) rootView.findViewById(R.id.class_list);
-        CourseListAdapter courseListAdapter = new CourseListAdapter(rootView.getContext(), classList);
+    swipeListView = (SwipeListView) rootView.findViewById(R.id.class_list);
+    CourseListAdapter courseListAdapter = new CourseListAdapter(rootView.getContext(), classList);
 
-        swipeListView.setAdapter(courseListAdapter);
+    swipeListView.setAdapter(courseListAdapter);
 
-        View view = inflater.inflate(R.layout.swipelistview, null, false);
-        Button moreInfoButton = (Button) view.findViewById(R.id.more_info_button);
+    View view = inflater.inflate(R.layout.swipelistview, null, false);
+    Button moreInfoButton = (Button) view.findViewById(R.id.more_info_button);
 
+    moreInfoButton.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        System.out.println("LISTENING");
+        Log.e("tag", "CLICKING THE BUTTON");
 
-        moreInfoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("LISTENING");
-                Log.e("tag", "CLICKING THE BUTTON");
+        Intent intent = new Intent(getActivity(), InfoActivity.class);
+        startActivity(intent);
+      }
+    });
 
-                Intent intent = new Intent(getActivity(), InfoActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        return rootView;
-    }
+    return rootView;
+  }
 }
