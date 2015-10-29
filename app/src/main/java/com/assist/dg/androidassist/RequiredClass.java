@@ -13,7 +13,6 @@ public class RequiredClass {
     private String univEquivalent = "Default Equiv";
 
     public RequiredClass(){
-
     }
 
     public RequiredClass(String name, RequiredClass[] prereqs, float numUnits, 
@@ -28,15 +27,12 @@ public class RequiredClass {
     }
 
 
-   private void qualif()
-   {
-    for(int i = 0; i < prerequisites.length; i++)
-     {
-             if(prerequisites[i].isTaken() == false)
-             {
-                  qualified = false;
-             }
-      }
+   private void qualif(){
+       for (RequiredClass prerequisite : prerequisites) {
+           if (!prerequisite.isTaken()) {
+               qualified = false;
+           }
+       }
      qualified =  true;
    }
 

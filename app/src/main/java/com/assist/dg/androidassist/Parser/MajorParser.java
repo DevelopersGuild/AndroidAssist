@@ -1,9 +1,9 @@
-package com.assist.dg.androidassist.Parser;
+package com.assist.dg.androidassist.parser;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.assist.dg.androidassist.Fragment.ChooseMajorFragment;
+import com.assist.dg.androidassist.fragment.ChooseMajorFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -109,7 +109,6 @@ public class MajorParser extends AsyncTask<Void, Void, String> {
                 listOfMajorValues.add(major.getString("value"));
             }
         } catch (Exception e){
-            System.out.println(majorJsonStr);
             Log.e("major_parser", "ERROR CONVERTING JSON INTO MAJOR LIST");
         }
     }

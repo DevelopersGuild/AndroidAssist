@@ -1,6 +1,5 @@
-package com.assist.dg.androidassist.Fragment;
+package com.assist.dg.androidassist.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.assist.dg.androidassist.Activity.InfoActivity;
-import com.assist.dg.androidassist.Adapter.CourseListAdapter;
+import com.assist.dg.androidassist.activity.InfoActivity;
+import com.assist.dg.androidassist.adapter.CourseListAdapter;
 import com.assist.dg.androidassist.R;
 import com.assist.dg.androidassist.RequiredClass;
 import com.fortysevendeg.swipelistview.SwipeListView;
