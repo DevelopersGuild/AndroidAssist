@@ -32,11 +32,14 @@ public class ChooseMajorFragment extends Fragment {
 
     public ChooseMajorFragment() {
         listOfMajors = new ArrayList<String>();
+        listOfMajorValue = new ArrayList<String>();
+        listOfMajorValue.add("default_value");
         listOfMajors.add("Choose a Major");
 
         //Add dummy data
         for (int i=0; i<15; i++){
             listOfMajors.add("Major " + i);
+            listOfMajorValue.add("default_value" + i);
         }
 
 
