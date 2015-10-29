@@ -1,21 +1,58 @@
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'com.droidtitan:lint-cleaner-plugin:0.3.0'
+  }
+}
+
 apply plugin: 'com.android.application'
+apply plugin: 'com.droidtitan.lintcleaner'
 
 android {
-  compileSdkVersion 23
-  buildToolsVersion "21.1.2"
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
 
   defaultConfig {
     applicationId "com.assist.dg.androidassist"
-    minSdkVersion 16
-    targetSdkVersion 23
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
     versionCode 1
     versionName "1.0"
   }
   buildTypes {
+    def STRING = "String"
+    def BOOLEAN = "boolean"
+    def TRUE = "true"
+    def FALSE = "false"
+    def END_POINT = "END_POINT"
+    def LOCAL_END_POINT = "\"http://localhost:8081\""
+    def PRODUCTION_END_POINT = "\"http://assist.spencerdo.com\""
+
+    debug {
+      buildConfigField STRING, END_POINT, LOCAL_END_POINT
+    }
     release {
       minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      buildConfigField STRING, END_POINT, PRODUCTION_END_POINT
     }
+  }
+  lintOptions {
+    checkReleaseBuilds false
+    abortOnError false
+    disable 'InvalidPackage'
+  }
+  lintCleaner {
+    // Exclude specific files
+  }
+  packagingOptions {
+    exclude 'META-INF/services/javax.annotation.processing.Processor'
+    exclude 'META-INF/NOTICE.txt'
+    exclude 'META-INF/LICENSE.txt'
+    exclude 'LICENSE.txt'
+    exclude 'LICENSE'
   }
 }
 
