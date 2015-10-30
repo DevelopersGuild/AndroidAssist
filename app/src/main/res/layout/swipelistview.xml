@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="12dp"
+    android:paddingTop="12dp"
+>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/back"
+        android:tag="back"
+        android:layout_gravity="left|center_vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_info"
+            android:id="@+id/more_info_button"
+            android:background="@drawable/abc_btn_borderless_material"
+            android:layout_gravity="left|center_vertical"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/taken_button"
+            android:text="@string/button_taken"
+            android:background="@drawable/abc_btn_borderless_material"
+            android:layout_gravity="right|center_vertical"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/front"
+        android:background="@drawable/list_border"
+        android:layout_gravity="left|center_vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="From College"
+            android:layout_weight="0.5"
+            android:id="@+id/required_class_textview"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Into Univ"
+            android:layout_weight="0.5"
+            android:id="@+id/univ_equivalent_textview"/>
+
+        </LinearLayout>
+
+</FrameLayout>

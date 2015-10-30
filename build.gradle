@@ -1,19 +1,30 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:1.1.0'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
+  repositories {
+    jcenter()
+    mavenCentral()
+    maven { url "http://dl.bintray.com/tbruyelle/tbruyelle" }
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:1.3.0'
+    // NOTE: Do not place your application dependencies here; they belong
+    // in the individual module build.gradle files
+  }
+}
+allprojects {
+  repositories {
+    jcenter()
+    maven { url 'http://clinker.47deg.com/nexus/content/groups/public' }
+  }
 }
 
-allprojects {
-    repositories {
-        jcenter()
-    }
+ext {
+  compileSdkVersion = 23
+  buildToolsVersion = '23.0.1'
+
+  minSdkVersion = 16
+  targetSdkVersion = 23
+
+  supportVersion = '23.0.1'
 }
