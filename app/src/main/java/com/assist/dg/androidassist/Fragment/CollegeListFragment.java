@@ -42,6 +42,7 @@ public class CollegeListFragment extends BaseFragment implements
       @Override public void onResponse(Response<List<College>> response, Retrofit retrofit) {
         WLog.i("status: " + response.code() + ", message: " + response.message());
         WLog.i("size: " + response.body().size());
+
         adapter.setColleges(response.body());
 
         new Handler(Looper.getMainLooper()).post(new Runnable() {
