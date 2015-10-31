@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
+import com.assist.dg.androidassist.activity.BaseActivity;
 
 /**
  * Created by Spencer Do on 2015. 10. 28..
@@ -25,6 +26,10 @@ public abstract class BaseFragment extends Fragment {
     }
     ButterKnife.bind(this, view);
     return view;
+  }
+
+  public BaseActivity getBaseActivity() {
+    return (BaseActivity) getActivity();
   }
 
   private void throwLayoutIdError() {
