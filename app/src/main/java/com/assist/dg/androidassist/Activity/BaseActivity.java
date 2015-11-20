@@ -11,15 +11,22 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.assist.dg.androidassist.R;
 import com.assist.dg.androidassist.fragment.BaseFragment;
+import com.assist.dg.androidassist.util.ActivityManager;
+import com.assist.dg.androidassist.util.BundleSet;
+import com.assist.dg.androidassist.util.FragmentType;
 
 /**
  * Created by Spencer Do on 2015. 10. 28..
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity {
 
   @Bind(R.id.base_navigation) NavigationView navigationView;
   @Bind(R.id.base_drawer) DrawerLayout drawerLayout;
   @Bind(R.id.toolbar) Toolbar toolbar;
+
+  private Bundle bundle;
+  protected BaseFragment mFragment;
+  private FragmentType fragmentType;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -27,12 +34,41 @@ public abstract class BaseActivity extends AppCompatActivity {
     ButterKnife.bind(this);
     setSupportActionBar(toolbar);
 
-    try {
-      getFragmentManager().beginTransaction()
-          .add(R.id.activity_layout, createBaseFragment())
-          .commit();
-    } catch (Exception e) {
-      e.printStackTrace();
+    if (getIntent() != null) {
+      if (getIntent().hasExtra(ActivityManager.TASK)) {
+        fragmentType = (FragmentType) getIntent().getSerializableExtra(ActivityManager.TASK);
+      }
+
+      if (getIntent().hasExtra(ActivityManager.BUNDLE)) {
+        bundle = getIntent().getBundleExtra(ActivityManager.BUNDLE);
+        //mAnimType = (ActivityStarter.AnimationType) bundle.getSerializable(
+        //    BundleSet.TRANSITION_ANIMATION_TYPE);
+      }
+    }
+
+    if (fragmentType == null) {
+      fragmentType = FragmentType.COLLEGE_LIST;
+    }
+
+    if (savedInstanceState == null) {
+      try {
+        mFragment = fragmentType.getFragmentClass().newInstance();
+        if (bundle != null) {
+          mFragment.setArguments(bundle);
+        }
+
+        //setOnBackKeyListener(mFragment.getOnBackKeyListener());
+      } catch (Exception localException) {
+        localException.printStackTrace();
+      }
+
+      try {
+        getFragmentManager().beginTransaction()
+            .add(R.id.activity_layout, mFragment)
+            .commit();
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     }
 
     final ActionBar ab = getSupportActionBar();
@@ -42,8 +78,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
     setupDrawerContent(navigationView);
   }
-
-  public abstract BaseFragment createBaseFragment();
 
   private void setupDrawerContent(final NavigationView navigationView) {
     navigationView.setNavigationItemSelectedListener(
@@ -59,9 +93,21 @@ public abstract class BaseActivity extends AppCompatActivity {
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case android.R.id.home:
-        drawerLayout.openDrawer(navigationView);
+        //drawerLayout.openDrawer(navigationView);
+        ActivityManager.with(this, FragmentType.UNIVERSITY_LIST)
+            .addBundle(new BundleSet.Builder().putCollegeCode("fff").build().getBundle()).go();
         return true;
     }
     return super.onOptionsItemSelected(item);
+  }
+
+  @Override protected void onDestroy() {
+    super.onDestroy();
+    fragmentType = null;
+    ButterKnife.unbind(this);
+  }
+
+  public FragmentType getFragmentType() {
+    return fragmentType;
   }
 }

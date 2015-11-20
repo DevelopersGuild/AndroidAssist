@@ -11,6 +11,9 @@ import com.assist.dg.androidassist.R;
 import com.assist.dg.androidassist.adapter.CollegeListAdapter;
 import com.assist.dg.androidassist.model.College;
 import com.assist.dg.androidassist.service.ApiProvider;
+import com.assist.dg.androidassist.util.ActivityManager;
+import com.assist.dg.androidassist.util.BundleSet;
+import com.assist.dg.androidassist.util.FragmentType;
 import com.assist.dg.androidassist.util.WLog;
 import java.util.List;
 import retrofit.Callback;
@@ -61,5 +64,7 @@ public class CollegeListFragment extends BaseFragment
 
   @Override public void onClickCollegeItem(College c) {
     WLog.i("selected college: " + c.getName());
+    ActivityManager.with(getBaseActivity(), FragmentType.UNIVERSITY_LIST)
+        .addBundle(new BundleSet.Builder().putCollegeCode(c.getCode()).build().getBundle()).go();
   }
 }
