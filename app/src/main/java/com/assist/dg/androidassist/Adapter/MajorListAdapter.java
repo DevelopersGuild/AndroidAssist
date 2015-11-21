@@ -3,14 +3,13 @@ package com.assist.dg.androidassist.adapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-import com.assist.dg.androidassist.model.College;
+import com.assist.dg.androidassist.model.Major;
 
 /**
  * Created by Spencer Do on 2015. 11. 20..
  */
-public class CollegeListAdapter extends ListAdapter<College> {
-
-  public CollegeListAdapter(OnItemClickListener<College> l) {
+public class MajorListAdapter extends ListAdapter<Major> {
+  public MajorListAdapter(OnItemClickListener<Major> l) {
     super(l);
   }
 

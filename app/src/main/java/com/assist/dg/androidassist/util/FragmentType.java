@@ -2,6 +2,7 @@ package com.assist.dg.androidassist.util;
 
 import com.assist.dg.androidassist.fragment.BaseFragment;
 import com.assist.dg.androidassist.fragment.CollegeListFragment;
+import com.assist.dg.androidassist.fragment.MajorListFragment;
 import com.assist.dg.androidassist.fragment.UniversityListFragment;
 
 /**
@@ -11,7 +12,8 @@ public enum FragmentType {
 
   INIT(null),
   COLLEGE_LIST(CollegeListFragment.class),
-  UNIVERSITY_LIST(UniversityListFragment.class);
+  UNIVERSITY_LIST(UniversityListFragment.class),
+  MAJOR_LIST(MajorListFragment.class);
 
   private Class<? extends BaseFragment> mFragmentClass;
   private String mTitle;

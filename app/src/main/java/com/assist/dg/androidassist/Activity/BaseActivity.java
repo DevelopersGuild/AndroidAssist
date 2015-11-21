@@ -12,7 +12,6 @@ import butterknife.ButterKnife;
 import com.assist.dg.androidassist.R;
 import com.assist.dg.androidassist.fragment.BaseFragment;
 import com.assist.dg.androidassist.util.ActivityManager;
-import com.assist.dg.androidassist.util.BundleSet;
 import com.assist.dg.androidassist.util.FragmentType;
 
 /**
@@ -93,9 +92,7 @@ public class BaseActivity extends AppCompatActivity {
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case android.R.id.home:
-        //drawerLayout.openDrawer(navigationView);
-        ActivityManager.with(this, FragmentType.UNIVERSITY_LIST)
-            .addBundle(new BundleSet.Builder().putCollegeCode("fff").build().getBundle()).go();
+        drawerLayout.openDrawer(navigationView);
         return true;
     }
     return super.onOptionsItemSelected(item);

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by doyonghoon on 2015. 10. 28..
  */
-public class College {
+public class College extends AssistData {
 
   @SerializedName("name") private String name;
   @SerializedName("value") private String code;
